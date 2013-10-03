@@ -61,14 +61,14 @@
       (active (funcall active-command direction))
       (on     (funcall on-command     direction))
       (t      (if fallback-function
-                  (funcall fallback-function)
-                t)))))
+                  (funcall fallback-function))))))
 
 (defun skk-b-dwim (active-func on-func &optional fallback)
   (when skk-mode
     (case skk-henkan-mode
       (active (skk-b active-func fallback))
-      (on     (skk-b on-func     fallback)))))
+      (on     (skk-b on-func     fallback))
+      (t      :not-match))))
 
 (defun skk-b-move-henkan-point-fwd ()
   (interactive)
